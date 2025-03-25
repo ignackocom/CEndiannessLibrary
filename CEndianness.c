@@ -8,7 +8,7 @@
 * \details
 *
 * \see       https://github.com/cpredef/predef
-*			 https://en.cppreference.com/w/c
+*	     https://en.cppreference.com/w/c
 *            and other resources
 ******************************************************************************/
 
