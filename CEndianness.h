@@ -8,7 +8,7 @@
 * \details
 *
 * \see       https://github.com/cpredef/predef
-*			 https://en.cppreference.com/w/c
+*	     https://en.cppreference.com/w/c
 *            and other resources
 ******************************************************************************/
 
@@ -19,7 +19,7 @@
 
 typedef enum {
 	ENDIAN_UNKNOWN,		/* Unknown-endian */
-	ENDIAN_BIG,			/* Big-endian */
+	ENDIAN_BIG,		/* Big-endian */
 	ENDIAN_LITTLE,		/* Little-endian */
 	ENDIAN_BIG_WORD,	/* Middle-endian, Honeywell 316 style */
 	ENDIAN_LITTLE_WORD	/* Middle-endian, PDP-11 style */
