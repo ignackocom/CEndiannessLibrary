@@ -20,25 +20,6 @@
 #include "CEndianness.h"
 
 
-#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
-
-/* C99 and higher */
-typedef union {
-	uint32_t value;
-	uint8_t data[sizeof(uint32_t)];
-} t_union_number;
-
-#else /* defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L */
-
-/* C89 and lower */
-typedef union {
-	unsigned long value;
-	unsigned char data[sizeof(unsigned long)];
-} t_union_number;
-
-#endif /* defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L */
-
-
 
 #if defined(__clang__)
 #pragma clang unsafe_buffer_usage begin
@@ -46,7 +27,23 @@ typedef union {
 
 T_ENDIAN Endian(void)
 {
-	t_union_number num;
+#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
+
+	/* C99 and higher */
+	union {
+		uint32_t value;
+		uint8_t data[sizeof(uint32_t)];
+	} num;
+
+#else /* defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L */
+
+	/* C89 and lower */
+	union {
+		unsigned long value;
+		unsigned char data[sizeof(unsigned long)];
+	} num;
+
+#endif /* defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L */
 
 	num.data[0] = 0x00;
 	num.data[1] = 0x01;
