@@ -8,7 +8,7 @@
 * \details
 *
 * \see       https://github.com/cpredef/predef
-*	     https://en.cppreference.com/w/c
+*			 https://en.cppreference.com/w/c
 *            and other resources
 ******************************************************************************/
 
@@ -64,3 +64,9 @@ T_ENDIAN Endian(void)
 #if defined(__clang__)
 #pragma clang unsafe_buffer_usage end
 #endif /* defined(__clang__) */
+
+
+long CENDIANNESS_VERSION(void)
+{
+	return (CENDIANNESS_H);
+}
