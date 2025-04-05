@@ -1,5 +1,6 @@
 # CEndianness
-C Endian detection code
+C Endian detection code.<br/>
+C89, C99 and >C99 compatible.
 
 Example of use
 
