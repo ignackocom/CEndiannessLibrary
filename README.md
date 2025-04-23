@@ -4,7 +4,7 @@ C89, C99 and >C99 compatible.
 
 Example of use
 
-```
+```c
 int main(void)
 {
     T_ENDIAN endian;
