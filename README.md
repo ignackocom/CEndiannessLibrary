@@ -5,9 +5,31 @@ C89, C99 and >C99 compatible.
 Example of use
 
 ```c
+#include <stdio.h>
+
+#if defined(__TURBOC__)
+#include <conio.h>
+#endif /* defined(__TURBOC__) */
+
+
+#ifdef _MSC_VER
+#pragma warning(disable:4464)
+#endif /* _MSC_VER */
+
+#include "../CEndianness/CEndianness.h"
+
+#ifdef _MSC_VER
+#pragma warning(default:4464)
+#endif /* _MSC_VER */
+
+
 int main(void)
 {
     T_ENDIAN endian;
+
+#if defined(__TURBOC__)
+    clrscr();
+#endif /* defined(__TURBOC__) */
 
     printf("Endian test\n");
 
@@ -35,21 +57,39 @@ int main(void)
 #endif /* defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L */
     printf("\n");
 
-    printf("Endian native short     %04X\n", Endian_native_unsigned_short(0x0123U));
-    printf("Endian native int       %08X\n", Endian_native_unsigned_int(0x01234567U));
-    printf("Endian native long      %08lX\n", Endian_native_unsigned_long(0x01234567UL));
+    printf("ENDIAN Native unsigned short     %04X\n", ENDIAN_Native_unsigned_short(0x0123U));
+    printf("ENDIAN Native unsigned int       %08lX\n", ENDIAN_Native_unsigned_int(0x01234567U));
+    printf("ENDIAN Native unsigned long      %08lX\n", ENDIAN_Native_unsigned_long(0x01234567UL));
 #if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
-    printf("Endian native long long %016llX\n", Endian_native_unsigned_long_long(0x0123456789ABCDEFULL));
+    printf("ENDIAN Native unsigned long long %016llX\n", ENDIAN_Native_unsigned_long_long(0x0123456789ABCDEFULL));
 #endif /* defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L */
     printf("\n");
 
-    printf("Endian net    short     %04X\n", Endian_net_unsigned_short(0x0123U));
-    printf("Endian net    int       %08X\n", Endian_net_unsigned_int(0x01234567U));
-    printf("Endian net    long      %08lX\n", Endian_net_unsigned_long(0x01234567UL));
+    printf("ENDIAN Native UINT16 %04X\n", ENDIAN_Native_UINT16(0x0123U));
+    printf("ENDIAN Native UINT32 %08lX\n", ENDIAN_Native_UINT32(0x01234567U));
+#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L || defined(__cplusplus) && __cplusplus > 199711L
+    printf("ENDIAN Native UINT64 %016llX\n", ENDIAN_Native_UINT64(0x0123456789ABCDEFULL));
+#endif /* defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L || defined(__cplusplus) && __cplusplus > 199711L */
+    printf("\n");
+
+    printf("ENDIAN Net unsigned short     %04X\n", ENDIAN_Net_unsigned_short(0x0123U));
+    printf("ENDIAN Net unsigned int       %08lX\n", ENDIAN_Net_unsigned_int(0x01234567U));
+    printf("ENDIAN Net unsigned long      %08lX\n", ENDIAN_Net_unsigned_long(0x01234567UL));
 #if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
-    printf("Endian net    long long %016llX\n", Endian_net_unsigned_long_long(0x0123456789ABCDEFULL));
+    printf("ENDIAN Net unsigned long long %016llX\n", ENDIAN_Net_unsigned_long_long(0x0123456789ABCDEFULL));
 #endif /* defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L */
     printf("\n");
+
+    printf("ENDIAN Net UINT16 %04X\n", ENDIAN_Net_UINT16(0x0123U));
+    printf("ENDIAN Net UINT32 %08lX\n", ENDIAN_Net_UINT32(0x01234567U));
+#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L || defined(__cplusplus) && __cplusplus > 199711L
+    printf("ENDIAN Net UINT64 %016llX\n", ENDIAN_Net_UINT64(0x0123456789ABCDEFULL));
+#endif /* defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L || defined(__cplusplus) && __cplusplus > 199711L */
+    printf("\n");
+
+#if defined(__TURBOC__)
+    getch();
+#endif /* defined(__TURBOC__) */
 
     return(0);
 }
@@ -65,3 +105,4 @@ you can make a copy of the source codes and change the code as needed
 2025 03 30 byte swap macros added <br/>
 2025 03 30 endian native code added <br/>
 2025 03 30 endian net code added <br/>
+2025 05 02 extended by UINT16, UINT32, UINT64<br/>
