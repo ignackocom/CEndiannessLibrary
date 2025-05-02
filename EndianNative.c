@@ -13,8 +13,10 @@
 *            and other resources
 ******************************************************************************/
 
+#include <stddef.h>
 #include <limits.h>
 
+#include "Datatype.h"
 #include "EndianNative.h"
 
 
@@ -22,36 +24,45 @@
 #pragma clang unsafe_buffer_usage begin
 #endif /* defined(__clang__) */
 
-unsigned short Endian_native_unsigned_short(unsigned short net_number)
+unsigned short ENDIAN_Native_unsigned_short(unsigned short net_number)
 {
-	unsigned short result = 0;
-	int i;
+	size_t i;
+	unsigned short result;
 
-	for (i = 0; i < (int)sizeof(result); i++) {
+	result = 0;
+
+	for (i = 0; i < sizeof(result); i++) 
+	{
 		result <<= CHAR_BIT;
 		result += (((unsigned char*)&net_number)[i] & UCHAR_MAX);
 	}
 	return result;
 }
 
-unsigned int Endian_native_unsigned_int(unsigned int net_number)
+unsigned int ENDIAN_Native_unsigned_int(unsigned int net_number)
 {
-	unsigned int result = 0;
-	int i;
+	size_t i;
+	unsigned int result;
 
-	for (i = 0; i < (int)sizeof(result); i++) {
+	result = 0;
+
+	for (i = 0; i < sizeof(result); i++) 
+	{
 		result <<= CHAR_BIT;
 		result += (((unsigned char*)&net_number)[i] & UCHAR_MAX);
 	}
 	return result;
 }
 
-unsigned long Endian_native_unsigned_long(unsigned long net_number)
+unsigned long ENDIAN_Native_unsigned_long(unsigned long net_number)
 {
-	unsigned long result = 0;
-	int i;
+	size_t i;
+	unsigned long result;
 
-	for (i = 0; i < (int)sizeof(result); i++) {
+	result = 0;
+
+	for (i = 0; i < sizeof(result); i++) 
+	{
 		result <<= CHAR_BIT;
 		result += (((unsigned char*)&net_number)[i] & UCHAR_MAX);
 	}
@@ -60,12 +71,15 @@ unsigned long Endian_native_unsigned_long(unsigned long net_number)
 
 #if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
 
-unsigned long long Endian_native_unsigned_long_long(unsigned long long net_number)
+unsigned long long ENDIAN_Native_unsigned_long_long(unsigned long long net_number)
 {
-	unsigned long long result = 0;
-	int i;
+	size_t i;
+	unsigned long long result;
 
-	for (i = 0; i < (int)sizeof(result); i++) {
+	result = 0;
+
+	for (i = 0; i < sizeof(result); i++) 
+	{
 		result <<= CHAR_BIT;
 		result += (((unsigned char*)&net_number)[i] & UCHAR_MAX);
 	}
@@ -73,6 +87,57 @@ unsigned long long Endian_native_unsigned_long_long(unsigned long long net_numbe
 }
 
 #endif /* defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L */
+
+
+
+UINT16 ENDIAN_Native_UINT16(UINT16 net_number)
+{
+	size_t i;
+	UINT16 result;
+
+	result = 0;
+
+	for (i = 0; i < sizeof(result); i++)
+	{
+		result <<= CHAR_BIT;
+		result += (((unsigned char*)&net_number)[i] & UCHAR_MAX);
+	}
+	return result;
+}
+
+UINT32 ENDIAN_Native_UINT32(UINT32 net_number)
+{
+	size_t i;
+	UINT32 result;
+
+	result = 0;
+
+	for (i = 0; i < sizeof(result); i++)
+	{
+		result <<= CHAR_BIT;
+		result += (((unsigned char*)&net_number)[i] & UCHAR_MAX);
+	}
+	return result;
+}
+
+#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L || defined(__cplusplus) && __cplusplus > 199711L
+
+UINT64 ENDIAN_Native_UINT64(UINT64 net_number)
+{
+	size_t i;
+	UINT64 result;
+
+	result = 0;
+
+	for (i = 0; i < sizeof(result); i++)
+	{
+		result <<= CHAR_BIT;
+		result += (((unsigned char*)&net_number)[i] & UCHAR_MAX);
+	}
+	return result;
+}
+
+#endif /* defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L || defined(__cplusplus) && __cplusplus > 199711L */
 
 #if defined(__clang__)
 #pragma clang unsafe_buffer_usage end

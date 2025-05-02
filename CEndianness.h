@@ -18,6 +18,7 @@
 
 
 /* All includes. */
+#include "Datatype.h"
 #include "Endian.h"
 #include "EndianBSwap.h"
 #include "EndianNative.h"
