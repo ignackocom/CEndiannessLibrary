@@ -1,5 +1,5 @@
-# CEndianness
-C Endian detection code.<br/>
+# CEndiannessLibrary
+C Endian Library detection code.<br/>
 C89, C99 and >C99 compatible.
 
 Example of use
@@ -106,3 +106,4 @@ you can make a copy of the source codes and change the code as needed
 2025 03 30 endian native code added <br/>
 2025 03 30 endian net code added <br/>
 2025 05 02 extended by UINT16, UINT32, UINT64<br/>
+2025 05 09 repository renamed to CEndiannessLibrary<br/>
