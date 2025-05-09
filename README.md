@@ -1,5 +1,5 @@
 # CEndiannessLibrary
-C Endian Library detection code.<br/>
+C Endian library detection code.<br/>
 C89, C99 and >C99 compatible.
 
 Example of use
