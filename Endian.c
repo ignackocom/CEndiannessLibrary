@@ -13,11 +13,8 @@
 *            and other resources
 ******************************************************************************/
 
-#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
-/* C99 and higher */
-#include <stdint.h>
-#endif /* defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L */
 
+#include "Datatype.h"
 #include "Endian.h"
 
 
@@ -27,23 +24,11 @@
 
 T_ENDIAN Endian(void)
 {
-#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
-
-	/* C99 and higher */
+	/* all C versions */
 	union {
-		uint32_t value;
-		uint8_t data[sizeof(uint32_t)];
+		UINT32 value;
+		UINT8 data[sizeof(UINT32)];
 	} num;
-
-#else /* defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L */
-
-	/* C89 and lower */
-	union {
-		unsigned long value;
-		unsigned char data[sizeof(unsigned long)];
-	} num;
-
-#endif /* defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L */
 
 	num.data[0] = 0x00;
 	num.data[1] = 0x01;
