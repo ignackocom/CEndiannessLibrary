@@ -107,3 +107,4 @@ you can make a copy of the source codes and change the code as needed
 2025 03 30 endian net code added <br/>
 2025 05 02 extended by UINT16, UINT32, UINT64<br/>
 2025 05 09 repository renamed to CEndiannessLibrary<br/>
+2025 05 09 better universal Endian.c code<br/>
